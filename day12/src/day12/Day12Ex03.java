@@ -49,13 +49,14 @@ public class Day12Ex03 {
 	//피보나치 수열
 	//1 + 1 + 2 + 3 + 5 + 8 + 13 + 21 = 54 
 	public static void Fibo() {
+		final int MAX = 21;
 		int prev = 0; //이전항
 		int curr = 1; //현재항
 		int next = 0; //다음항
 		int sum = 0;
-		while(curr <= 21) {
+		while(curr <= MAX) {
 			System.out.print(curr);
-			System.out.print(curr!=21 ? "+" : "=");
+			System.out.print(curr!=MAX ? "+" : "=");
 			sum += curr;
 			next = curr + prev;
 			prev = curr;
@@ -68,6 +69,49 @@ public class Day12Ex03 {
 		System.out.print(sum);
 	}
 	
+	public static void Fibo2() {
+		final int MAX = 21;
+		int sum = 0;
+		for(int p=0, curr = 1, n = 0;
+				curr <= MAX; n = p + curr, p=curr, curr=n) {
+			sum += curr;
+			System.out.print(curr);
+			System.out.print(curr!=MAX ? "+" : "=");
+		}
+		System.out.print(sum);
+	}
+	
+	//1 + 1 - 2 + 3 - 5 + 8 - 13 + 21 = 14
+	public static void Fibo3() {
+		final int MAX = 21;
+		int prev = 0; //이전항
+		int curr = 1; //현재항
+		int next = 0; //다음항
+		int sum = 2;
+		
+		int a = 1;
+		
+		while(curr <= MAX) {
+			System.out.print(curr);
+			if(a%2==1 && curr!=MAX) {
+				System.out.print("+");
+				sum -= curr;
+			} else if (a%2==0 && curr!=MAX) {
+				System.out.print("-");
+				sum += curr;
+			} else if (curr == MAX) {
+				System.out.print("=");
+				sum += curr;
+			}
+			
+			next = curr + prev;
+			prev = curr;
+			curr = next;
+			a++;
+		}
+		System.out.print(sum);
+		
+	}
 	
 	public static void main(String[] args) {
 		// 1+2+3+4+5+6+7+8+9+10 = 55
@@ -90,6 +134,10 @@ public class Day12Ex03 {
 		pratice2();
 		System.out.println();
 		Fibo();
+		System.out.println();
+		Fibo2();
+		System.out.println();
+		Fibo3();
 	}
 
 }
