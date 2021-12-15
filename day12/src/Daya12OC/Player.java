@@ -37,12 +37,4 @@ public class Player {
 		
 		return res;
 	}
-
-	
-
-
-
-	
-
-	
 }
