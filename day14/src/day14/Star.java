@@ -2,43 +2,23 @@ package day14;
 
 public class Star {
 
-	public static void Tri(int MAX, int END) {
-        for (int i = 0; i < MAX+END; i++) {
-        	END = i < MAX ? END - 1 : END + 1;
-             for (int j = 0; j < MAX; j++) {
-                 System.out.print(j > END ? "*" : " ");
-             }
-            for (int j = 0; j < MAX-1; j++) {
-                 System.out.print(j > MAX-3-END ? " " : "*");
-             }
-            System.out.println();
-        }
+	public static void Star(int MAX, int END) {
+		int NUM = MAX + END;
+		for(int i=0; i<NUM; i++) {
+			for(int j=0; j<NUM; j++) {
+				System.out.print(j>=MAX && j<NUM-MAX? " " : "*");
+			}
+			System.out.println();
+			MAX = i<END ? MAX-1 : MAX+1;
+		}
 	}
-	
-	public static void RTri(int MAX) {
-		MAX = MAX-1;
-		for (int i = 0; i < MAX; i++) {
-            System.out.print(" ");
-			for (int j = 0; j < MAX; j++) {
-                System.out.print(j < i ? " " : "*");
-            }
-            for (int j = 0; j < MAX-1-i; j++) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
-	}
-	
+
 	public static void main(String[] args) {
-		int MAX = 9;
-        int END = MAX-1;
-        
-        //삼각형 별찍기
-        Tri(MAX, END);
+		int MAX = 5;
+		int END = MAX - 1;
 		
-        //역삼각형 별찍기
-        RTri(MAX);
-		
+		Star(MAX, END);
+
 	}
 
 }
