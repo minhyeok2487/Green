@@ -2,20 +2,36 @@ package day14;
 
 public class Ch03Ex06 {
 
-	public static void main(String[] args) {
+	public static void main_note(String[] args) {
 		// 1차원 배열
 		// 배열이란?
-		
+
 		// 자바의 배열선언 중괄호 {} 사용.
 		// 배열은 타입이 배열 타입.
 		// 배열 오브젝트이다.
-		
-		// 스트링 배열 타입
+
+		// 스트링 배열 타입 - 특정타입에 브라켓츠를 붙이면 배열 타입이 된다.
 		String[] a;
-		
+
 		// 인트 배열 타입
 		int[] b;
+		// char 2바이트이지만 모든 배열의 참조변수는 정수를 저장하는 4바이트이다.
+		// 참조값은 모두 정수이다.
+		// 배열도 오브젝트이므로 변수는 참조변수가 된다.
+		char[] c;
 
+	}
+	public static void main(String[] args) {
+		// 배열 선언과 동시에 초기화 하기
+		// 배열의 리터럴
+		int[] arr = {10, 20, 30, 40};
+
+		//배열 선언 후에 배열을 대입하기 - new 연산자를 사용해야한다.
+		int[] days;
+		days = new int[]{1,2,3,4};
+		
+		// 함수의 인자로 배열을 생성과 동시에 전달 할 때 사용.
+		// 과제 : 날짜입력 유효성 체크 구현
 	}
 
 }
