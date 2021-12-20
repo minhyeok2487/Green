@@ -45,11 +45,12 @@ public class Ch03Ex22 {
         System.out.println(Arrays.toString(arr));
 	}
 	
-	public static void main03(String[] args) {
+	public static void SelectSort() {
 		int[] arr = {7,3,2,8,1,9,4,5,6};
 		//오름차순 정렬 [선택정렬]
-		for(int i=1; i < arr.length-1; i++){
-            for(int j=i+1 ; j <arr.length; j--){
+		for(int i=0; i < arr.length-1; i++){
+			int min = i;
+            for(int j=i+1 ; j <arr.length; j++){
             	if(arr[i]>arr[j]) {
             		int temp = arr[i];
             		arr[i] = arr[j];
@@ -121,10 +122,7 @@ public class Ch03Ex22 {
 	
 	
 	public static void main(String[] args) {
-		final int SIZE =6;
-		lotto2(SIZE);
-		lotto3();
-		
+		SelectSort();
 	}
 	
 
