@@ -44,6 +44,7 @@ public class Ch03Ex01 {
 		System.out.print("며칠 후 날짜를 알고 싶나요? >>");
 		int dd = scan.nextInt();
 		total = dd;
+		
 		total = total - (days[month-1]-day);
 		int i = month%12;
 		for(; total > days[i];i++, i%=12) {
