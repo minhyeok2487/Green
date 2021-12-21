@@ -58,7 +58,7 @@ public class MainCls {
 		System.out.printf("[no]\t[name]\t[kor]\t[ENG]\t[MAT]\t[SUM]\t[AVG]\t[GRADE]\t[RANK]\n");
 	}
 	
-	public static final int MAX = 1000;
+	public static final int MAX = 100;
 	public static Student[] sArr = new Student[MAX];
 	public static int top = 0; // 스택 자료구조처럼.
 	static int sequence = 1;
@@ -72,12 +72,19 @@ public class MainCls {
 	}
 	
 	public static int menu() {
-		System.out.println("1.입력 2.출력 3.검색 4.수정 5.삭제 6.종료 ");
-		System.out.print("선택 >> ");
-		int no = scan.nextInt();
-		// 예외처리 및 유효성 검사
+		int num = 0;
+		while(true) {
+			System.out.println("1.입력 2.출력 3.검색 4.수정 5.삭제 6.종료 ");
+			System.out.print("선택 >> ");
+			num = scan.nextInt();
+			if(num>6 || num<0) {
+				System.out.println("범위 초과! 1~6 사이의 숫자를 입력하여 주십시오.");
+			} else if(num<=6){
+				break;
+			}
+		}
 		
-		return no;
+		return num;
 	}
 	
 	public static void run() {
@@ -151,34 +158,9 @@ public class MainCls {
 		} else {
 			System.out.println("수정할 데이터를 입력해주십시오.");
 			int kor =0, eng=0, mat = 0;
-			while(true) {
-				System.out.print("kor >> ");
-				kor = scan.nextInt();
-				if(kor>100) {
-					System.out.println("범위 초과! 100이하의 숫자를 입력하여 주십시오.");
-				} else if(kor<=100){
-					break;
-				}
-			}
-			while(true) {
-				System.out.print("eng >> ");
-				eng = scan.nextInt();
-				if(kor>100) {
-					System.out.println("범위 초과! 100이하의 숫자를 입력하여 주십시오.");
-				} else if(kor<=100){
-					break;
-				}
-			}
-			while(true) {
-				System.out.print("mat >> ");
-				mat = scan.nextInt();
-				if(kor>100) {
-					System.out.println("범위 초과! 100이하의 숫자를 입력하여 주십시오.");
-				} else if(kor<=100){
-					break;
-				}
-			}
-			
+			kor = score("kor");
+			eng = score("eng");
+			mat = score("mat");
 			sArr[i] = new Student(sArr[i].no,name, kor,eng,mat);
 		}
 	}
@@ -236,10 +218,28 @@ public class MainCls {
 		Basic();
 		for(Student std : sArr) {
 			if(std == null) break;
-			System.out.println(std);
+			if(std.name != null) {
+				System.out.println(std);
+			}
+			
 		}
 	}
 
+	public static int score(String a) {
+		int num = 0;
+		while(true) {
+			System.out.printf("%s >> ",a);
+			num = scan.nextInt();
+			if(num>100 || num<0) {
+				System.out.println("범위 초과! 1~100 사이의 숫자를 입력하여 주십시오.");
+			} else if(num<=100){
+				break;
+			}
+		}
+	
+		return num;
+	}
+	
 	private static void input() {
 		System.out.println("::::::::::::::: INPUT :::::::::::::::");
 		// 성명, 국어점수, 영어점수, 수학점수를 배열에 입력 받는다
@@ -256,35 +256,11 @@ public class MainCls {
 				break;
 			}
 		}
-		// 유효성 검사 - 100이하의 점수
+
 		int kor =0, eng=0, mat = 0;
-		while(true) {
-			System.out.print("kor >> ");
-			kor = scan.nextInt();
-			if(kor>100) {
-				System.out.println("범위 초과! 100이하의 숫자를 입력하여 주십시오.");
-			} else if(kor<=100){
-				break;
-			}
-		}
-		while(true) {
-			System.out.print("eng >> ");
-			eng = scan.nextInt();
-			if(kor>100) {
-				System.out.println("범위 초과! 100이하의 숫자를 입력하여 주십시오.");
-			} else if(kor<=100){
-				break;
-			}
-		}
-		while(true) {
-			System.out.print("mat >> ");
-			mat = scan.nextInt();
-			if(kor>100) {
-				System.out.println("범위 초과! 100이하의 숫자를 입력하여 주십시오.");
-			} else if(kor<=100){
-				break;
-			}
-		}
+		kor = score("kor");
+		eng = score("eng");
+		mat = score("mat");
 		
 		sArr[top++] = new Student(sequence++,name, kor,eng,mat);
 	}
