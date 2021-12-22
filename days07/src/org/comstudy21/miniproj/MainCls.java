@@ -60,23 +60,19 @@ public class MainCls {
 				Basic();
 				System.out.println(sArr[i]);
 				count++;
-				break;
+				System.out.print("위 데이터를 삭제하시려면 1, 그렇지 않다면 2 입력 >> ");
+				int check = scan.nextInt();
+				if(check == 1) {
+					sArr[i] = new Student();
+					System.out.println("데이터를 삭제하였습니다.");
+				} else if (check == 2){
+					System.out.println("데이터 삭제를 취소합니다");
+				}
 			} 
 		}
-		
 		if(count == 0) {
 			System.out.println("그 이름의 데이터는 존재하지 않습니다.");
-		} else {
-			System.out.print("위 데이터를 삭제하시려면 1, 그렇지 않다면 2 입력 >> ");
-			int check = scan.nextInt();
-			if(check == 1) {
-				sArr[i] = new Student();
-				System.out.println("데이터를 삭제하였습니다.");
-			} else if (check == 2){
-				System.out.println("데이터 삭제를 취소합니다");
-			}
 		}
-		
 	}
 
 	private static void modify() {
