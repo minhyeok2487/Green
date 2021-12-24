@@ -6,6 +6,8 @@ class menu{
 	
 }
 
+
+
 public class ReservationMain {
 	public static Scanner scan = new Scanner(System.in);
 	
