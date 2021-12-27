@@ -1,4 +1,7 @@
-package mh_TelBook;
+package mh_TelBook.view;
+
+import mh_TelBook.model.save;
+import mh_TelBook.model.Number;
 
 public class cut {
 	public static void Cut() {

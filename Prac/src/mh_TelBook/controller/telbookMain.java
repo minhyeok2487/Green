@@ -1,4 +1,12 @@
-package mh_TelBook;
+package mh_TelBook.controller;
+
+import mh_TelBook.view.cut;
+import mh_TelBook.view.delete;
+import mh_TelBook.view.end;
+import mh_TelBook.view.input;
+import mh_TelBook.view.modify;
+import mh_TelBook.view.search;
+import mh_TelBook.view.output;
 
 public class telbookMain {
 	

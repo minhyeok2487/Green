@@ -1,4 +1,4 @@
-package mh_TelBook;
+package mh_TelBook.view;
 
 public class end {
 	// 종료 코드

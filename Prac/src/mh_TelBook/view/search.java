@@ -1,6 +1,8 @@
-package mh_TelBook;
+package mh_TelBook.view;
 
 import java.util.Scanner;
+
+import mh_TelBook.model.save;
 
 public class search {
 	public static Scanner scan = new Scanner(System.in);

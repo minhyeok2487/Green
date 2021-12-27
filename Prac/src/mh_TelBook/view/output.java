@@ -1,9 +1,11 @@
-package mh_TelBook;
+package mh_TelBook.view;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import mh_TelBook.model.save;
+import mh_TelBook.model.Number;
 
-class output {
+public class output {
 	public static void Allgroupname(){  
 		System.out.println("현재 그룹");
 		int n = save.top;

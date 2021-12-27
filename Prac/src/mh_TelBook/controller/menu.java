@@ -1,4 +1,4 @@
-package mh_TelBook;
+package mh_TelBook.controller;
 import java.util.Scanner;
 
 public class menu {
