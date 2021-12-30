@@ -3,41 +3,61 @@ package prac05.stack;
 import java.util.Scanner;
 
 public class StringStack implements Stack {
+	private String[] stack;
+	private int top;
 	
-	Scanner scan = new Scanner(System.in);
+	public StringStack(int capacity) {
+		stack = new String[capacity];
+		top = 0;
+	}
 	
 	@Override
 	public int length() {
-		int num = 0;
-		return num;
+		return top;
 	}
 
 	@Override
 	public int capacity() {
-		System.out.print("총 스택 저장 공간의 크기 입력 >> ");
-		int num = scan.nextInt();
-		return num;
+		return stack.length;	
+		
 	}
 
 	@Override
 	public String pop() {
-		System.out.print("문자열 입력 >> ");
-		String res = scan.next();
-		return res;
+		if(top-1 < 0) {
+			return null;
+		}
+		
+		return stack[--top];
 	}
 
 	@Override
 	public boolean push(String val) {
-		if(val.equals("그만")) {
+		if(top >= capacity()) {
 			return false;
 		}
+		stack[top++] = val;
 		return true;
 	}
 
 	public void run() {
-		// TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		while(true) {
+			System.out.print("문자열 입력 >> ");
+			String str = scan.next();
+			if(!push(str)) {
+				System.out.println("스텍이 꽉 차서 푸시 불가!");
+				break;
+			}
+		}
+		scan.close();
 		
+		System.out.print("스택에 저장된 모든 문자열 팝 ");
+		while(true) {
+			String str = pop();
+			if(str == null) break;
+			System.out.print(str+" ");
+		}
+		System.out.println();
 	}
-	
-	
 }
