@@ -6,6 +6,8 @@ import mh_TelBook.model.save;
 import mh_TelBook.model.Number;
 
 public class output {
+	
+	// 현재 저장되어 있는 그룹 찾는 메소드
 	public static void Allgroupname(){  
 		System.out.println("현재 그룹");
 		int n = save.top;
@@ -13,7 +15,7 @@ public class output {
 		for(int i =0; i<n; i++) {
 			Allgroupname[i] = save.sArr[i].group;
 		}
-		// 배열 중복제거 안배운거......
+		// 배열 중복제거 
 		ArrayList<String> arrayList = new ArrayList<>();
 		for(String data : Allgroupname){
 		    if(!arrayList.contains(data))
@@ -22,8 +24,8 @@ public class output {
 		System.out.println(arrayList);	 
     }  
 	
-	
-	private static void outputAll() {
+	//전체 출력
+	public static void outputAll() {
 		save.Basic();
 		for (Number std : save.sArr) {
 			if (std == null)
@@ -34,6 +36,7 @@ public class output {
 		}
 	}
 	
+	// 그룹출력
 	private static void outputGroup() {
 		System.out.println("그룹 검색을 시작합니다.");
 

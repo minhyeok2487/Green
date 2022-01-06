@@ -15,7 +15,7 @@ public class save {
 		sArr[top++] = new Number(sequence++, "이민혁", "010-2427-2487", "기본");
 		sArr[top++] = new Number(sequence++, "홍길동", "010-1234-6659", "친구");
 		sArr[top++] = new Number(sequence++, "박지성", "010-4445-1126", "직장");
-		sArr[top++] = new Number(sequence++, "오지호", "010-4892-1659", "직장");
+		sArr[top++] = new Number(sequence++, "오지호", "010-2222-1659", "직장");
 		sArr[top++] = new Number(sequence++, "정은하", "010-1321-0156", "친구");
 		sArr[top++] = new Number(sequence++, "이정연", "010-0669-4875", "직장");
 		sArr[top++] = new Number(sequence++, "이민혁", "010-2427-2487", "친구");
