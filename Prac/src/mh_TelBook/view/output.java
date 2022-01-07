@@ -78,7 +78,8 @@ public class output {
 			outputAll();
 		} else if(num == 2) {
 			outputGroup();
-		} 
+		}
+		Controlfile.AutoSave();
 	}
 
 }

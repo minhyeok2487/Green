@@ -53,5 +53,6 @@ public class input {
 		}
 
 		save.sArr[save.top++] = new Number(save.sequence++, name, number, group);
+		Controlfile.AutoSave();
 	}
 }

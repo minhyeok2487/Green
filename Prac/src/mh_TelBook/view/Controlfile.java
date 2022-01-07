@@ -22,6 +22,7 @@ public class Controlfile {
 			String yesno_cheek = scan.next();
 			if (yesno_cheek.equals("y") || yesno_cheek.equals("Y")) {
 				runSave();
+				Controlfile.AutoSave();
 				break;
 			} else if (yesno_cheek.equals("n") || yesno_cheek.equals("N")) {
 				System.out.println("파일저장을 종료합니다");
@@ -75,6 +76,7 @@ public class Controlfile {
 			String yesno_cheek = scan.next();
 			if (yesno_cheek.equals("y") || yesno_cheek.equals("Y")) {
 				runLoad();
+				Controlfile.AutoSave();
 				break;
 			} else if (yesno_cheek.equals("n") || yesno_cheek.equals("N")) {
 				System.out.println("파일 불러오기를 종료합니다");
@@ -106,6 +108,36 @@ public class Controlfile {
 			bufReader.close();
 		} catch (FileNotFoundException e) {
 		} catch (IOException e) {
+		}
+	}
+	
+	public static void AutoSave() {
+		String name = "C:\\Users\\Minhyeok\\Desktop\\git\\Green\\Prac\\src\\mh_TelBook\\Autosave.txt";
+		FileWriter fw = null;
+		BufferedWriter bw = null;
+		try {
+			fw = new FileWriter(name);
+			bw = new BufferedWriter(fw);
+			for (Number std : save.sArr) {
+				if (std == null)
+					break;
+				if (std.name != null) {
+					bw.write(std.toString());
+					bw.newLine();
+				}
+			}
+			bw.flush();
+		} catch (IOException e) {
+			System.out.println(e);
+		} finally {
+			try {
+				fw.close();
+			} catch (IOException e) {
+			}
+			try {
+				bw.close();
+			} catch (IOException e) {
+			}
 		}
 	}
 }

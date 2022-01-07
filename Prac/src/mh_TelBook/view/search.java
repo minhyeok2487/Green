@@ -22,5 +22,6 @@ public class search {
 		if(count == 0) {
 			System.out.println("이 이름의 데이터는 존재하지 않습니다.");
 		}
+		Controlfile.AutoSave();
 	}
 }

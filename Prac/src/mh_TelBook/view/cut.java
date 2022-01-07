@@ -35,6 +35,7 @@ public class cut {
 				System.out.println("중복값 제거를 완료하였습니다.");
 			}
 		}
+		Controlfile.AutoSave();
 	}
 
 	private static int check() {

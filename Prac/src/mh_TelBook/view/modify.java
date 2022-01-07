@@ -54,6 +54,7 @@ public class modify {
 			}
 
 			save.sArr[i] = new Number(save.sArr[i].no, name, number, group);
+			Controlfile.AutoSave();
 		}
 	}
 }
