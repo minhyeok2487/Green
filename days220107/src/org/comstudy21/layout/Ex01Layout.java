@@ -1,7 +1,11 @@
 package org.comstudy21.layout;
-import java.awt.*;
-import java.util.ArrayList;
-
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class Ex01Layout extends MyFrame {
 
 	public Button btn1 = new Button("btn1");
@@ -10,14 +14,9 @@ public class Ex01Layout extends MyFrame {
 	public Button btn4 = new Button("btn4");
 	public Button btn5 = new Button("btn5");
 	
-	//public ArrayList<Button> btns = new ArrayList<Button>();
-	//{
-	//	for(int i = 0; i<100; i++) {
-	//		btns.add(new Button("BTN"+i));
-	//	}
-	//}
 	public static void main(String[] args) {
 		new Ex01Layout().setVisible(true);
+		
 
 	}
 	public Ex01Layout() {
@@ -26,6 +25,13 @@ public class Ex01Layout extends MyFrame {
 		flowLayoutEx();
 		//gridLayoutEx();
 		//gridBagLayoutEx();
+		
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				System.exit(0);
+			}
+		});
 	}
 	
 	private void gridBagLayoutEx() {
