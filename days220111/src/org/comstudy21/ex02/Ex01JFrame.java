@@ -21,7 +21,7 @@ public class Ex01JFrame extends MyJFrame {
 		fieldPanel.setBorder(BorderFactory.createEmptyBorder(25, 25, 5, 25));
 		c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
-		name = new JLabel("이름: ");
+		name = new JLabel("이        름: ");
 		id = new JLabel("아이디: ");
 		password = new JLabel("비밀번호: ");
 		age = new JLabel("나이: ");
