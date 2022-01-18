@@ -2,10 +2,12 @@ package minhyeok.multichat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -15,7 +17,8 @@ public class Client extends JFrame{
 	private JTextField tf_ID;
 	private JTextField tf_IP;
 	private JTextField tf_PORT;
-	
+	private JList tf_LIST;
+	static Vector C_UV = new Vector();
 	//생성자
 	public Client(){
 		init();
@@ -28,7 +31,7 @@ public class Client extends JFrame{
 		setTitle("채팅-Client");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setBounds(100, 100, 288, 390);
+		setBounds(200, 200, 300, 400);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);  //사용자 자유 배치
@@ -75,7 +78,6 @@ public class Client extends JFrame{
 					String _id = tf_ID.getText().trim(); //공백 제거
 					String _ip = tf_IP.getText().trim();
 					int _port = Integer.parseInt(tf_PORT.getText().trim());
-					
 					MainView view = new MainView(_id, _ip, _port);
 					setVisible(false);					
 				}catch(Exception ex){

@@ -11,9 +11,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -23,9 +26,11 @@ public class MainView extends JFrame{
 	private JPanel contentPane;
 	private JTextField textField;
 	
+	private Vector UV;
 	private String id;
 	private String ip;
 	private int port;
+	
 	
 	JButton sendBtn;   //"전송" 버튼
 	JTextArea textArea;
@@ -52,7 +57,7 @@ public class MainView extends JFrame{
 		setTitle("채팅-클라이언트");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setBounds(100, 100, 288, 390);
+		setBounds(200, 200, 300, 400);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);  //사용자 자유 배치
@@ -72,6 +77,8 @@ public class MainView extends JFrame{
 		sendBtn = new JButton("전송");
 		sendBtn.setBounds(161, 312, 111, 42);
 		contentPane.add(sendBtn);
+		
+		
 		
 		textArea.setEnabled(false); //textArea 객체 비활성화
 		setVisible(true);
@@ -144,7 +151,7 @@ public class MainView extends JFrame{
 				while(true){ //무한 Loop
 					try{
 						//서버로 부터 메시지 수신 
-						String msg = dis.readUTF(); 
+						String msg = dis.readUTF();
 						textArea.append(msg + "\n");
 					}catch(IOException e){
 						textArea.append("메시지 수신 에러!!\n");

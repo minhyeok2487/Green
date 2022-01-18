@@ -12,29 +12,37 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
+
+import minhyeok.multichat.Server.ThreadHandler;
 
 public class Server extends JFrame{
 	//필드 선언
 	private JPanel contentPane;
 	private JTextField textField;
 	private JButton start;
-	JTextArea textArea;
-	
+	private JTextArea textArea;
+	private JList LIST;
+	private JLabel label;
 	private ServerSocket serverSocket;
 	private Socket socket;
 	private int port;
+	private int count = 0;
 	
 	//스레드간의 정보를 공유할 Vector 객체 생성
-	private Vector vector = new Vector();  //가변 배열 	
-	
+	static Vector vector = new Vector();  //가변 배열 
+	static DefaultListModel model = new DefaultListModel();
+
 	//생성자
 	public Server(){
 		init();   //사용자 정의 메소드 호출
@@ -46,7 +54,7 @@ public class Server extends JFrame{
 	public void init(){
 		setTitle("채팅-서버");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 150, 300, 400);
+		setBounds(300, 150, 500, 400);
 		
 		contentPane = new JPanel();
 		contentPane.setLayout(null); //사용자 자유 배치
@@ -67,6 +75,14 @@ public class Server extends JFrame{
 		textField.setColumns(10);
 		textField.setText("2487");
 		contentPane.add(textField);
+		
+		label = new JLabel("접속중인 사용자");
+		label.setBounds(280, 5, 190, 30);
+		contentPane.add(label);
+		
+		LIST = new JList(vector);
+		LIST.setBounds(280, 30, 190, 300);
+		contentPane.add(LIST);
 		
 		JLabel portLable = new JLabel("Port Number");
 		portLable.setBounds(12, 264, 98, 37);
@@ -176,6 +192,8 @@ public class Server extends JFrame{
 				
 				Nickname = dis.readUTF();
 				textArea.append("접속자 ID " + Nickname + "\n");
+				model.addElement(Nickname);
+				LIST.setModel(model);
 				//사용자 정의 메소드 호출
 				send_Message("정상 접속 되었습니다."); 
 			}catch(Exception e){
@@ -189,10 +207,11 @@ public class Server extends JFrame{
 				textArea.append("메시지 송신 에러 발생\n");
 			}
 		}
+		int i;
 		public void broad_cast(String str){
-			for(int i=0; i<user_vactor.size(); i++){
+			for(i=0; i<user_vactor.size(); i++){
 				ThreadHandler imsi = (ThreadHandler)user_vactor.elementAt(i);
-				imsi.send_Message(Nickname + ":" + str);				
+				imsi.send_Message(Nickname + ":" + str);
 			}
 		}
 		public void InMessage(String str){
@@ -205,14 +224,16 @@ public class Server extends JFrame{
 				try{
 					String msg = dis.readUTF();
 					InMessage(msg);
+					
 				}catch(IOException e){
 					try{
 						dos.close();
 						dis.close();
 						user_socket.close();
 						user_vactor.removeElement(this);
+						model.removeElement(Nickname);
 						textArea.append(user_vactor.size()+":현재 벡터에 담겨진 사용자\n");
-						textArea.append("사용자 접속 끊어짐\n");
+						textArea.append(Nickname+" 사용자 접속 끊어짐\n");
 						break;
 					}catch(Exception ex){
 						System.out.println(ex);
