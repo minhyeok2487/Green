@@ -1,4 +1,4 @@
-package multichat;
+package minhyeok.multichat;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,6 +49,7 @@ public class Client extends JFrame{
 		tf_IP = new JTextField();
 		tf_IP.setBounds(92, 118, 150, 20);
 		tf_IP.setColumns(10);
+		tf_IP.setText("127.0.0.1");
 		contentPane.add(tf_IP);
 		
 		JLabel lblPort = new JLabel("Port");
@@ -58,6 +59,7 @@ public class Client extends JFrame{
 		tf_PORT = new JTextField();
 		tf_PORT.setBounds(92, 185, 150, 20);
 		tf_PORT.setColumns(10);
+		tf_PORT.setText("2487");
 		contentPane.add(tf_PORT);
 		
 		JButton btnNewButton = new JButton("서버 접속 버튼");		

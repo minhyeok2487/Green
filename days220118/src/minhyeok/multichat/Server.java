@@ -1,4 +1,4 @@
-package multichat;
+package minhyeok.multichat;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -59,11 +59,13 @@ public class Server extends JFrame{
 		textArea = new JTextArea();
 		textArea.setColumns(20);
 		textArea.setRows(5);
+		
 		js.setViewportView(textArea);
 		
 		textField = new JTextField();
 		textField.setBounds(98, 264, 154, 37);
 		textField.setColumns(10);
+		textField.setText("2487");
 		contentPane.add(textField);
 		
 		JLabel portLable = new JLabel("Port Number");
